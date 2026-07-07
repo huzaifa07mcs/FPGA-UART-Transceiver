@@ -1,3 +1,54 @@
+//==========================================================================
+// Copyright (c) 2026 Huzaifa
+//==========================================================================
+//
+// FILE NAME    : uart.v
+// PROJECT      : FPGA-Based UART Transmitter and Receiver
+// TYPE         : RTL Design (FSM-Based)
+// LANGUAGE     : Verilog HDL
+//
+// UNIVERSITY   : National University of Sciences and Technology (NUST)
+// DEPARTMENT   : Electrical Engineering
+//
+// AUTHOR       : Huzaifa
+// EMAIL        : huzaifa.e19@gmail.com
+//
+//==========================================================================
+//
+// RELEASE HISTORY
+//
+// VERSION   DATE         AUTHOR      DESCRIPTION
+// -------   ----------   ----------  --------------------------------------
+// 1.0       07-Jul-2026  Huzaifa     Initial project release
+//
+//==========================================================================
+//
+// KEYWORDS
+// UART, Serial Communication, Verilog HDL, FPGA, RTL Design,
+// FSM, UART Transmitter, UART Receiver, Asynchronous Communication
+//
+//==========================================================================
+//
+// PURPOSE
+// This project implements a synthesizable Universal Asynchronous Receiver
+// Transmitter (UART) using Verilog HDL. The design integrates independent
+// transmitter and receiver modules based on Finite State Machines (FSMs)
+// and is intended for FPGA implementation.
+//
+// Features:
+//   • UART Transmission (8-N-1)
+//   • UART Reception (8-N-1)
+//   • Independent TX and RX FSMs
+//   • Baud Rate Generator
+//   • Start Bit Detection
+//   • Mid-Bit Sampling
+//   • Stop Bit Verification
+//   • Data Valid Flag
+//   • Busy Status Indication
+//   • Synthesizable RTL Design
+//
+//==========================================================================
+
 module uart(
     input clk,
     input reset,
