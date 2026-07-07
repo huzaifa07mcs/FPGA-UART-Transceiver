@@ -164,20 +164,6 @@ Both transmitter and receiver use independent Moore-style FSMs.
 
 ---
 
-# RTL Schematic
-
-The RTL schematic generated after synthesis illustrates the hardware inferred from the Verilog RTL design.
-
-> *(Add **`rtl_schematic.png`** to the repository and reference it below.)*
-
-```html
-<p align="center">
-  <img src="rtl_schematic.png" alt="RTL Schematic" width="900">
-</p>
-```
-
----
-
 # Project Structure
 
 ```
