@@ -64,23 +64,23 @@ module uart(
     output reg data_valid
 );
 
-//=====================================================
+
 // PARAMETERS
-//=====================================================
+
 localparam BAUD_MAX      = 13'd5207;
 localparam HALF_BAUD_MAX = 13'd2603;
 
-//=====================================================
+
 // FSM STATES
-//=====================================================
+
 localparam IDLE  = 2'b00,
            START = 2'b01,
            DATA  = 2'b10,
            STOP  = 2'b11;
 
-///////////////////////////////////////////////////////
+
 // TRANSMITTER
-///////////////////////////////////////////////////////
+
 
 // Registers
 reg [1:0] tx_state, tx_next_state;
@@ -93,9 +93,9 @@ reg tx_baudenable;
 // Baud Tick
 wire tx_baudtick = (tx_baudcount == BAUD_MAX);
 
-//-----------------------------------------------------
+
 // Baud Counter
-//-----------------------------------------------------
+
 always @(posedge clk or posedge reset)
 begin
     if(reset)
@@ -108,9 +108,9 @@ begin
         tx_baudcount <= tx_baudcount + 1'b1;
 end
 
-//-----------------------------------------------------
+
 // State Register
-//-----------------------------------------------------
+
 always @(posedge clk or posedge reset)
 begin
     if(reset)
@@ -119,9 +119,9 @@ begin
         tx_state <= tx_next_state;
 end
 
-//-----------------------------------------------------
+
 // Next State Logic
-//-----------------------------------------------------
+
 always @(*)
 begin
     tx_next_state = tx_state;
@@ -150,9 +150,8 @@ begin
     endcase
 end
 
-//-----------------------------------------------------
 // Datapath
-//-----------------------------------------------------
+
 always @(posedge clk or posedge reset)
 begin
     if(reset)
@@ -195,9 +194,9 @@ begin
     end
 end
 
-//-----------------------------------------------------
+
 // TX Output
-//-----------------------------------------------------
+
 always @(*)
 begin
     case(tx_state)
@@ -211,17 +210,17 @@ begin
     endcase
 end
 
-//-----------------------------------------------------
+
 // TX Busy
-//-----------------------------------------------------
+
 always @(*)
 begin
     txbusy = (tx_state != IDLE);
 end
 
-///////////////////////////////////////////////////////
+
 // RECEIVER
-///////////////////////////////////////////////////////
+
 
 // Registers
 reg [1:0] rx_state, rx_next_state;
@@ -235,9 +234,8 @@ reg rx_baudenable;
 wire rx_baudtick = (rx_baudcount == BAUD_MAX);
 wire rx_halftick = (rx_baudcount == HALF_BAUD_MAX);
 
-//-----------------------------------------------------
+
 // Baud Counter
-//-----------------------------------------------------
 always @(posedge clk or posedge reset)
 begin
     if(reset)
@@ -253,9 +251,9 @@ begin
         rx_baudcount <= rx_baudcount + 1'b1;
 end
 
-//-----------------------------------------------------
+
 // State Register
-//-----------------------------------------------------
+
 always @(posedge clk or posedge reset)
 begin
     if(reset)
@@ -264,9 +262,9 @@ begin
         rx_state <= rx_next_state;
 end
 
-//-----------------------------------------------------
+
 // Next State Logic
-//-----------------------------------------------------
+
 always @(*)
 begin
     rx_next_state = rx_state;
@@ -295,9 +293,9 @@ begin
     endcase
 end
 
-//-----------------------------------------------------
+
 // Datapath
-//-----------------------------------------------------
+
 always @(posedge clk or posedge reset)
 begin
     if(reset)
